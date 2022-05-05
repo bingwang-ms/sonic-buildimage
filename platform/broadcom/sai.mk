@@ -1,11 +1,13 @@
-LIBSAIBCM_VERSION = 4.3.5.4-3
+LIBSAIBCM_VERSION = 4.3.5.5-3
 LIBSAIBCM_BRANCH_NAME = REL_4.3.5.2_ppe_backport_7.1_pcbb_tunnel
 LIBSAIBCM_URL_PREFIX = "https://sonicstorage.blob.core.windows.net/public/sai/bcmsai/$(LIBSAIBCM_BRANCH_NAME)/$(LIBSAIBCM_VERSION)"
+
 BRCM_SAI = libsaibcm_$(LIBSAIBCM_VERSION)_amd64.deb
 $(BRCM_SAI)_URL = "$(LIBSAIBCM_URL_PREFIX)/$(BRCM_SAI)"
 BRCM_SAI_DEV = libsaibcm-dev_$(LIBSAIBCM_VERSION)_amd64.deb
 $(eval $(call add_derived_package,$(BRCM_SAI),$(BRCM_SAI_DEV)))
 $(BRCM_SAI_DEV)_URL = "$(LIBSAIBCM_URL_PREFIX)/$(BRCM_SAI_DEV)"
+
 # SAI module for DNX Asic family
 BRCM_DNX_SAI = libsaibcm_dnx_$(LIBSAIBCM_VERSION)_amd64.deb
 $(BRCM_DNX_SAI)_URL = "$(LIBSAIBCM_URL_PREFIX)/$(BRCM_DNX_SAI)"
