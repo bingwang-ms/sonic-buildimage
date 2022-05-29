@@ -6,10 +6,7 @@
         "{{ port }}|0-1": {
             "profile" : "[BUFFER_PROFILE|egress_lossy_profile]"
         },
-        "{{ port }}|2": {
-            "profile" : "[BUFFER_PROFILE|egress_lossless_profile]"
-        },
-        "{{ port }}|3-4": {
+        "{{ port }}|2-4": {
             "profile" : "[BUFFER_PROFILE|egress_lossless_profile]"
         },
         "{{ port }}|5": {
@@ -36,23 +33,5 @@
 {% endif %}
 {% endfor %}
     }
-{% endmacro %}
-{%- macro generate_pg_profiles_with_extra_lossy_pgs(port_names, port_names_require_extra_lossy_pgs) %}
-    "BUFFER_PG": {
-{% for port in port_names.split(',') %}
-{% if port not in port_names_require_extra_lossy_pgs.split(',') %}
-        "{{ port }}|2": {
-            "profile" : "[BUFFER_PROFILE|ingress_lossy_profile]"
-        },
-        "{{ port }}|6": {
-            "profile" : "[BUFFER_PROFILE|ingress_lossy_profile]"
-        },
-{% endif %}
-        "{{ port }}|0": {
-            "profile" : "[BUFFER_PROFILE|ingress_lossy_profile]"
-        }{% if not loop.last %},{% endif %}
-
-{% endfor %}
-    },
 {% endmacro %}
 {% endif %}
